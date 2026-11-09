@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The North Wind and the Sun</title>
+  <meta name="description" content="Aesop's fable of the North Wind and the Sun, retold in a landscape that is drawn as you read. At the end, the weather is yours.">
+  <meta name="theme-color" content="#8fbccb">
+  <meta property="og:title" content="The North Wind and the Sun">
+  <meta property="og:description" content="An old fable, retold in a landscape that is drawn as you read. At the end, the weather is yours.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://thepeeps191.github.io/fable-5.2-high-test/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/im-fell-french-canon-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/im-fell-double-pica-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#travels">Skip the telling</a>
+
+  <main>
+    <section class="telling" id="telling" aria-label="The fable">
+      <div class="stage">
+        <canvas class="land" aria-hidden="true"></canvas>
+
+        <nav class="ways" aria-label="Sections">
+          <a href="#begin">The fable</a>
+          <a href="#your-turn">Your turn</a>
+          <a href="#travels">Its travels</a>
+        </nav>
+
+        <div class="passages">
+          <header class="passage opening" id="top">
+            <h1 class="title" aria-label="The North Wind and the Sun">The North Wind<br>and the Sun</h1>
+            <p class="lede">A fable credited to Aesop, about two ways of getting what you want. Scroll to hear it told. At the end, the weather is yours.</p>
+          </header>
+
+          <p class="passage" id="begin"><span class="lead-in">The North Wind</span> and the Sun were arguing about which of them was the stronger. Each had a long list of proofs, and neither had ever persuaded the other of anything.</p>
+
+          <p class="passage">Then a traveller came along the road below, wrapped in a heavy red cloak. They agreed on a test. Whichever of them could get the cloak off his back would be called the stronger. The Wind went first.</p>
+
+          <p class="passage">The North Wind drew a breath that flattened the grass for a mile around, and blew.</p>
+
+          <p class="passage">The poplars bowed. Dust stood up off the road. But the harder the Wind blew, the tighter the traveller pulled the cloak around him, and the lower he bent his head.</p>
+
+          <p class="passage">At last the Wind was out of breath, and the cloak had not shifted an inch. “Your turn,” said the Wind, and did not say it kindly.</p>
+
+          <p class="passage">The Sun was in no hurry. First came a little light, and the traveller straightened his back. Then came warmth, and he pushed up his hat and undid the clasp at his neck.</p>
+
+          <p class="passage">By the top of the next hill the cloak was off and slung over one shoulder, and he was whistling. The Wind had to admit that the Sun was the stronger. It took the rest of the afternoon to say so.</p>
+
+          <blockquote class="passage moral">
+            <p>Persuasion is better than force.</p>
+            <footer>The moral, as George Fyler Townsend gave it in 1867</footer>
+          </blockquote>
+
+          <section class="passage sandbox" id="your-turn" aria-labelledby="your-turn-title">
+            <h2 id="your-turn-title">Your turn</h2>
+            <p class="brief">Here he comes again, cloak and all. You have a wind and a sun. Get the cloak off him.</p>
+            <div class="weather">
+              <label class="dial dial-wind">
+                <span class="dial-name">North Wind</span>
+                <input type="range" id="wind" min="0" max="100" value="10" step="1" aria-describedby="report">
+                <span class="dial-ends" aria-hidden="true"><i>still</i><i>gale</i></span>
+              </label>
+              <label class="dial dial-sun">
+                <span class="dial-name">Sun</span>
+                <input type="range" id="sun" min="0" max="100" value="30" step="1" aria-describedby="report">
+                <span class="dial-ends" aria-hidden="true"><i>clouded</i><i>blazing</i></span>
+              </label>
+            </div>
+            <p class="report" id="report" role="status" aria-live="polite">He’s walking easy, cloak on.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="travels" id="travels" aria-labelledby="travels-title">
+      <div class="travels-head">
+        <h2 id="travels-title">Where this fable has been</h2>
+        <p>It is short enough to memorise and old enough that nobody owns it. Every hand it passed through changed it a little.</p>
+      </div>
+
+      <ol class="road">
+        <li>
+          <h3>Around 600 <abbr title="before the common era">bce</abbr></h3>
+          <p>Told aloud in Greece and credited, as most good fables were, to Aesop. In Greek the two are Boreas and Helios. Scholars file the story as number 46 in the Perry Index, the standard catalogue of the tradition.</p>
+        </li>
+        <li>
+          <h3>Around 400 <abbr title="common era">ce</abbr></h3>
+          <p>Avianus puts it into Latin verse as <i lang="la">De Vento et Sole</i>, the fourth fable in a collection that schoolrooms went on copying for centuries.</p>
+        </li>
+        <li>
+          <h3>1668</h3>
+          <p>Jean de La Fontaine retells it in French verse as <i lang="fr">Phébus et Borée</i>, the third fable of his sixth book.</p>
+        </li>
+        <li>
+          <h3>1867</h3>
+          <p>George Fyler Townsend’s English translation closes on the five words most people remember: persuasion is better than force.</p>
+        </li>
+        <li>
+          <h3>1949</h3>
+          <p>By now the International Phonetic Association prints the fable as its specimen text. A linguist describing the sounds of a language records a speaker reading this story, which is how it came to exist in well over a hundred languages.</p>
+        </li>
+        <li>
+          <h3>1998</h3>
+          <p>Kim Dae-jung, newly president of South Korea, names his policy of engagement with the North after the fable: the Sunshine Policy.</p>
+        </li>
+      </ol>
+
+      <aside class="reading" aria-labelledby="reading-title">
+        <h2 id="reading-title">One more reading</h2>
+        <p class="reading-claim">The fable is usually read as a win for gentleness. It is also a story about who gets to choose the test.</p>
+        <p>Had the wager been to make the traveller put a cloak <em>on</em>, the North Wind would have won before the Sun was properly up. You can check that above: <a href="#your-turn">take the cloak off him</a>, then bring back the wind.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p>Set in the Fell Types, bought and cut for the university press at Oxford in the 1670s, within a few years of La Fontaine’s version. The Fell Types are digitally reproduced by <a href="https://www.iginomarini.com/" rel="noopener">Igino Marini</a>.</p>
+    <p>The landscape is not a picture. Your browser draws it fresh for every frame from two numbers: how hard the wind is blowing and how warmly the sun is shining. If your device asks for less motion, it holds still and changes only when you do.</p>
+    <p><a href="https://github.com/ThePeeps191/fable-5.2-high-test" rel="noopener">Read the source on GitHub</a></p>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

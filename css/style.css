@@ -1,0 +1,498 @@
+/* The Fell Types. Each face was cut for one size of metal type, so each is
+   used here near the size it was made for: Canon for display, Double Pica for
+   the story, English for notes. */
+@font-face {
+  font-family: "Fell Canon";
+  src: url("../fonts/im-fell-french-canon-latin-400-normal.woff2") format("woff2");
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Fell Canon";
+  src: url("../fonts/im-fell-french-canon-latin-400-italic.woff2") format("woff2");
+  font-style: italic; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Fell Double Pica";
+  src: url("../fonts/im-fell-double-pica-latin-400-normal.woff2") format("woff2");
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Fell Double Pica";
+  src: url("../fonts/im-fell-double-pica-latin-400-italic.woff2") format("woff2");
+  font-style: italic; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Fell English";
+  src: url("../fonts/im-fell-english-latin-400-normal.woff2") format("woff2");
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Fell English";
+  src: url("../fonts/im-fell-english-latin-400-italic.woff2") format("woff2");
+  font-style: italic; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: "Fell English SC";
+  src: url("../fonts/im-fell-english-sc-latin-400-normal.woff2") format("woff2");
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+
+:root {
+  /* The script rewrites the first three as the weather changes. */
+  --ink: #12273a;
+  --sky: #a6cbd2;
+  --ground: #0f2f2d;
+
+  --paper: #f4f1dc;
+  --gold: #f2c14e;
+  --cloak: #d93a2b;
+
+  --display: "Fell Canon", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --story: "Fell Double Pica", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --text: "Fell English", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --small-caps: "Fell English SC", "Fell English", Georgia, serif;
+
+  --gutter: clamp(1.25rem, 6vw, 6.5rem);
+  --top: clamp(4.5rem, 12vh, 7.5rem);
+  --story-size: clamp(1.25rem, min(3.2vw, 3.3vh), 2.35rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--ground);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--text);
+  font-size: 1.1875rem;
+  line-height: 1.58;
+  color: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, p, ol, blockquote { margin: 0; }
+h1, h2, h3 { font-weight: 400; }
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+::selection { background: var(--gold); color: #12273a; }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 10;
+  padding: 0.5rem 0.9rem;
+  background: var(--paper);
+  color: #12273a;
+  border-radius: 4px;
+}
+.skip:focus { top: 1rem; }
+
+/* ---------- the telling ---------- */
+
+/* Without script this is a plain page under a still sky: every passage in
+   order, nothing pinned, nothing hidden. */
+.stage {
+  position: relative;
+  padding: var(--top) var(--gutter) 5rem;
+  background: linear-gradient(#8fbccb, #bcdad9 55%, #ece9cd);
+  color: var(--ink);
+}
+.land { display: none; }
+.passages { max-width: calc(var(--story-size) * 25); }
+.passage + .passage { margin-top: 2.2em; }
+.sandbox { display: none; }
+html:not(.js) .ways a[href="#your-turn"] { display: none; }
+
+.ways {
+  position: absolute;
+  top: 1.35rem;
+  right: var(--gutter);
+  z-index: 2;
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2rem);
+  font-family: var(--text);
+  font-style: italic;
+  font-size: 1.125rem;
+}
+.ways a { text-decoration-line: none; padding: 0.35rem 0; }
+.ways a:hover, .ways a:focus-visible { text-decoration-line: underline; }
+
+.passage {
+  font-family: var(--story);
+  font-size: var(--story-size);
+  line-height: 1.42;
+  text-wrap: pretty;
+}
+
+/* the first words of the telling in small capitals, as a printer of the 1670s would */
+.passage .lead-in {
+  font-family: var(--small-caps);
+  font-size: 0.94em;
+  letter-spacing: 0.045em;
+  text-transform: lowercase;
+}
+
+.title {
+  font-family: var(--display);
+  font-size: min(11.5vw, 11vh, 9rem);
+  line-height: 0.98;
+  white-space: nowrap;
+  letter-spacing: -0.012em;
+  margin-left: -0.04em;
+}
+.title .word { display: inline-block; white-space: nowrap; }
+.title .ch { display: inline-block; }
+.lede {
+  max-width: 27em;
+  margin-top: 1.1em;
+  font-size: 0.88em;
+  text-wrap: pretty;
+}
+
+.moral p {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(2.3rem, min(5.4vw, 10vh), 6.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.008em;
+  text-wrap: balance;
+}
+.moral footer {
+  margin-top: 1.2em;
+  font-size: 0.74em;
+  font-style: italic;
+}
+
+.sandbox h2 {
+  font-family: var(--display);
+  font-size: clamp(2.1rem, min(4vw, 7.4vh), 4.4rem);
+  line-height: 1;
+}
+.brief {
+  max-width: 24em;
+  margin-top: 0.55em;
+  font-size: 0.88em;
+}
+.weather {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem clamp(1.5rem, 3vw, 3rem);
+  max-width: 34rem;
+  margin-top: 1.05em;
+}
+.dial { display: block; }
+.dial-name {
+  display: block;
+  font-size: 0.88em;
+  line-height: 1.2;
+}
+.dial-ends {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -0.35rem;
+  font-family: var(--text);
+  font-size: 1rem;
+  line-height: 1.2;
+}
+.report {
+  max-width: 26em;
+  min-height: 2.84em;
+  margin-top: 0.95em;
+  font-style: italic;
+  font-size: 0.88em;
+}
+
+/* Sliders: a thin line of ink and a round stone to push along it. */
+.dial input {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 2.75rem;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  cursor: grab;
+  touch-action: pan-y;
+  --v: 0%;
+}
+.dial input:active { cursor: grabbing; }
+.dial input:focus-visible { outline: none; }
+.dial input::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 2px;
+  background:
+    linear-gradient(currentColor 0 0) 0 / var(--v) 100% no-repeat,
+    color-mix(in srgb, currentColor 32%, transparent);
+}
+.dial input::-moz-range-track {
+  height: 2px;
+  border-radius: 2px;
+  background: color-mix(in srgb, currentColor 32%, transparent);
+}
+.dial input::-moz-range-progress {
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+.dial input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: calc(1px - 0.75rem);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: var(--stone);
+  transition: transform 0.15s ease-out;
+}
+.dial input::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: var(--stone);
+  box-sizing: border-box;
+  transition: transform 0.15s ease-out;
+}
+.dial input:hover::-webkit-slider-thumb, .dial input:active::-webkit-slider-thumb { transform: scale(1.14); }
+.dial input:hover::-moz-range-thumb, .dial input:active::-moz-range-thumb { transform: scale(1.14); }
+.dial input:focus-visible::-webkit-slider-thumb { outline: 2px solid currentColor; outline-offset: 4px; }
+.dial input:focus-visible::-moz-range-thumb { outline: 2px solid currentColor; outline-offset: 4px; }
+.dial-wind { --stone: #fbfbf4; }
+.dial-sun { --stone: var(--gold); }
+
+/* With script: the stage pins to the window, the land is drawn behind it, and
+   the passages take turns in the same patch of sky. */
+.js .telling {
+  position: relative;
+  height: calc(var(--n, 10) * 100vh);
+  height: calc(var(--n, 10) * 100svh);
+  background: var(--ground);
+}
+.js .stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  padding: 0;
+  overflow: hidden;
+  background: var(--sky);
+  transition: color 0.4s linear;
+}
+.js .land {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.js .passages {
+  position: absolute;
+  top: var(--top);
+  left: var(--gutter);
+  width: min(100% - 2 * var(--gutter), var(--story-size) * 25);
+  max-width: none;
+}
+.js .passage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 0.7em var(--sky);
+}
+.js .passage.opening { opacity: 1; }
+.js .sandbox { display: block; }
+.js .sandbox.live { pointer-events: auto; }
+
+/* One arrival: the title is blown in from the wind's side of the page. */
+@keyframes arrive {
+  from { opacity: 0; transform: translate3d(0.9em, -0.12em, 0) rotate(7deg); }
+  60% { opacity: 1; }
+  to { opacity: 1; transform: none; }
+}
+@keyframes settle {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .title .ch {
+    opacity: 0;
+    transform-origin: 50% 90%;
+    animation: arrive 0.95s cubic-bezier(0.16, 0.84, 0.3, 1) both;
+    animation-delay: calc(0.25s + var(--i) * 42ms);
+  }
+  .js .lede, .js .ways { animation: settle 1.1s ease-out 1.5s both; }
+}
+
+/* ---------- where the fable has been ---------- */
+
+.travels {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  column-gap: clamp(2rem, 6vw, 7rem);
+  row-gap: clamp(4rem, 10vh, 7rem);
+  padding: clamp(5rem, 16vh, 10rem) var(--gutter) clamp(5rem, 14vh, 9rem);
+  background: var(--ground);
+}
+.travels-head { align-self: start; position: sticky; top: 4.5rem; }
+.travels-head h2 {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5.4vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.travels-head p {
+  max-width: 21em;
+  margin-top: 1.3em;
+  font-family: var(--story);
+  font-size: clamp(1.1875rem, 1.6vw, 1.4375rem);
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+/* The itinerary is drawn as the road itself: dotted, with a stone at each stop
+   and the red cloak at the last one. */
+.road {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  max-width: 36rem;
+}
+.road li { position: relative; padding: 0 0 2.6rem 2.6rem; }
+.road li:last-child { padding-bottom: 0; }
+.road li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.95rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: #e9dcae;
+  box-shadow: 0 0 0 0.4rem var(--ground);
+}
+.road li::after {
+  content: "";
+  position: absolute;
+  left: 0.3125rem;
+  top: 2.2rem;
+  bottom: -0.45rem;
+  border-left: 2px dotted color-mix(in srgb, #e9dcae 55%, transparent);
+}
+.road li:last-child::after { content: none; }
+.road li:last-child::before { background: var(--cloak); }
+.road h3 {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  line-height: 1.2;
+  color: var(--gold);
+}
+.road abbr {
+  font-family: var(--small-caps);
+  font-style: normal;
+  font-size: 0.74em;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+.road p { margin-top: 0.35rem; text-wrap: pretty; }
+
+.reading { grid-column: 2; max-width: 36rem; padding-left: 2.6rem; }
+.reading h2 {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+.reading-claim {
+  margin-top: 0.7em;
+  font-family: var(--story);
+  font-style: italic;
+  font-size: clamp(1.4375rem, 2.2vw, 1.75rem);
+  line-height: 1.32;
+  color: var(--gold);
+  text-wrap: pretty;
+}
+.reading p + p { margin-top: 1em; }
+.reading em { font-style: italic; }
+
+/* ---------- colophon ---------- */
+
+.colophon {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem clamp(2rem, 6vw, 7rem);
+  padding: 3.25rem var(--gutter) 4rem;
+  background: color-mix(in srgb, var(--ground) 72%, #000);
+  color: color-mix(in srgb, var(--paper) 86%, transparent);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+.colophon p { max-width: 26em; text-wrap: pretty; }
+
+/* ---------- smaller windows ---------- */
+
+@media (max-width: 54rem) {
+  .travels { grid-template-columns: minmax(0, 1fr); }
+  .travels-head { position: static; }
+  .reading { grid-column: 1; }
+  .colophon { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 40rem) {
+  :root { --top: clamp(4.25rem, 10vh, 6rem); }
+  .weather { grid-template-columns: minmax(0, 1fr); gap: 0.95rem; max-width: 22rem; }
+  .ways { left: var(--gutter); right: auto; top: 1rem; gap: 1.35rem; }
+  .report { min-height: 4.26em; }
+}
+
+/* a phone on its side: very little sky to write in */
+@media (max-height: 34rem) and (orientation: landscape) {
+  :root { --top: 3.4rem; --story-size: 1.0625rem; }
+  .js .passages { width: min(100% - 2 * var(--gutter), 34rem); }
+  .ways { top: 0.6rem; }
+  .title { font-size: clamp(2rem, 13vh, 3rem); }
+  .lede { margin-top: 0.6em; }
+  .weather { margin-top: 0.4em; }
+  .dial input { height: 2.25rem; }
+  .report { margin-top: 0.3em; min-height: 0; }
+}
+
+@media (forced-colors: active) {
+  .js .passage { text-shadow: none; }
+  .dial input::-webkit-slider-thumb { background: ButtonText; }
+}
+
+@media print {
+  .js .telling { height: auto; }
+  .js .stage { position: static; height: auto; padding: 2rem 0; background: none; color: #000; }
+  .js .land, .ways, .sandbox, .js .sandbox { display: none; }
+html:not(.js) .ways a[href="#your-turn"] { display: none; }
+  .js .passages { position: static; width: auto; }
+  .js .passage { position: static; opacity: 1 !important; margin-top: 1.5em; text-shadow: none; }
+  .travels, .colophon { background: none; color: #000; }
+  .road h3, .reading-claim { color: #000; }
+}
